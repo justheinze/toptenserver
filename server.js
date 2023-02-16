@@ -120,8 +120,8 @@ io.on("connection", (socket) => {
 
   socket.on('setNSFW', (args) => {
     if (players[socket.id].name) {
-      console.log('NSFW Themes: ' + game.isNSFW);
       game.isNSFW = !game.isNSFW;
+      console.log('NSFW Themes: ' + game.isNSFW);
       io.emit('state', game);
     }
   });
