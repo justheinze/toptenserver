@@ -61,10 +61,10 @@ io.on("connection", (socket) => {
     io.emit('state', game);
   });
 
-  socket.on('join', (name) => {
-    console.log('someone joined as ' + name);
-    game.viewer.push(name);
-    players[socket.id] = { name: name };
+  socket.on('join', (args) => {
+    console.log('someone joined as ' + args);
+    game.viewer.push(args);
+    players[socket.id] = { name: args };
     io.emit('state', game);
   });
 
