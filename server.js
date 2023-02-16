@@ -9,6 +9,8 @@ const io = new Server(httpServer, { cors: { origin: '*' } });
 const themes = require("./themes.js");
 const nsfw = require("./nsfwThemes.js");
 
+const PORT = process.env.PORT || 3000;
+
 var allNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 //Liste aller verbundenen Clients
@@ -247,4 +249,6 @@ function shuffleArray(array) {
   }
 }
 
-httpServer.listen(3000);
+httpServer.listen(PORT, () => {
+  console.log("Listening at: " + PORT + " ...");
+});
