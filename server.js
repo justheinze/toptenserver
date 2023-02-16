@@ -4,7 +4,7 @@ const { Server } = require("socket.io");
 
 const app = express();
 const httpServer = createServer(app);
-const io = new Server(httpServer, { cors: { origin: '*' } });
+const io = new Server(httpServer, { cors: { origin: '*', } });
 
 const themes = require("./themes.js");
 const nsfw = require("./nsfwThemes.js");
