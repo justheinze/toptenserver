@@ -32,6 +32,9 @@ io.on("connection", (socket) => {
   if (sockets.length === 0) {
     newGame();
   }
+
+  socket.emit("wasConnected");
+
   sockets.push(socket);
 
   socket.on('disconnect', function () {
@@ -62,6 +65,14 @@ io.on("connection", (socket) => {
 
     io.emit('state', game);
   });
+
+  socket.on("reloadGame", oldGamestate => {
+    if (!game.started) {
+        console.log('altes game wiederhergestellt');
+        game = oldGamestate;
+        io.emit("state", game);
+    }
+});
 
   socket.on('join', (args) => {
     console.log('someone joined as ' + args);
